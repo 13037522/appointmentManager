@@ -1,7 +1,7 @@
 {
-  "name": "node-scheduler-demo",
+  "name": "Appointment Manager Program",
   "version": "0.0.1",
-  "description": "Demo of dhtmlxScheduler with nodeJs backend\r ===================",
+  "description": "This is the backend support for appoint Manager\r ===================",
   "main": "app.js",
   "dependencies": {
     "express": "~3.3.8",
