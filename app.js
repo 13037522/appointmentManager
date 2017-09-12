@@ -11,7 +11,7 @@ const port = 3000;
 var db = mango.db('localhost:27017/booking',{ w: 0});
     db.bind('event');
 
-//use public folder for static files
+//use public folder for static files 
 app.use(express.static(path.join(__dirname, 'public')));
 
 //is necessary for parsing post request
@@ -83,7 +83,7 @@ app.post('/data', function(req, res){
 		res.send("<data><action type='"+mode+"' sid='"+sid+"' tid='"+tid+"'/></data>");
 	}
 
-  //if db operation
+  //if db operation CRUD
 	if (mode == "updated")
 		db.event.updateById( sid, data, update_response);
 	else if (mode == "inserted")
