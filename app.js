@@ -1,14 +1,17 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 var path = require('path');
 const PORT = 3000;
+var is_locked = false;
 
-var db = require('mongoskin').db("localhost/testdb", { w: 0});
+
+var db = require('mongoskin').db("localhost/bookingSystem", { w: 0});
     db.bind('event');
-
 
 var app = express();
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.bodyParser());
+//app.use(express.bodyParser());
+
 
 
 app.get('/init', function(req, res){
@@ -49,17 +52,17 @@ app.get('/data', function(req, res){
 	});
 });
 
-
 app.post('/data', function(req, res){
 	var data = req.body;
 	var mode = data["!nativeeditor_status"];
 	var sid = data.id;
 	var tid = sid;
-
+//  is_locked = db.is
+//  if (var !is_locked = data.is_locked)
 	delete data.id;
 	delete data.gr_id;
 	delete data["!nativeeditor_status"];
-
+//  else is_locked = true;
 
 	function update_response(err, result){
 		if (err)
@@ -68,7 +71,12 @@ app.post('/data', function(req, res){
 			tid = data._id;
 
 		res.setHeader("Content-Type","text/xml");
+    if (is_locked)
 		res.send("<data><action type='"+mode+"' sid='"+sid+"' tid='"+tid+"'/></data>");
+    else
+    {
+      console.log("locked file")
+    }
 	}
 
 	if (mode == "updated")
