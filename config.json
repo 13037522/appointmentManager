@@ -1,5 +1,5 @@
 ﻿{
-    "connectionString": "mongodb://localhost:27017/bookingSystem",
-    "apiUrl": "http://localhost:3000/api",
-    "secret": "What is the name your first school"
+  "connectionString": "mongodb://localhost:27017/bookingSystem",
+  "apiUrl": "http://localhost:3000/api",
+  "secret": "What is the name your first school"
 }
